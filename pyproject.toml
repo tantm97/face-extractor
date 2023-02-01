@@ -1,0 +1,20 @@
+[tool.black]
+line-length = 127
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+)/
+'''
+
+[tool.pydocstyle]
+convention = "google"
+add_ignore = ["D205", "D415"]
