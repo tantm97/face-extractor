@@ -1,5 +1,3 @@
-# face-extractor
-
 # Face Extractor #
 This is a deep learning library that makes face recognition efficient.
 
