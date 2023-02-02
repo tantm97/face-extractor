@@ -3,9 +3,7 @@
 import sys
 
 # Local application imports
-from face_extractor.backbone import iresnet
-
-sys.path.append("../..")
+from backbone import iresnet
 
 
 def get_backbone(m_params):
