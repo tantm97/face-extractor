@@ -1,0 +1,19 @@
+gpu_id: [0]                                       # must set as a string, empty means using CPU
+
+extractor_params:                                 # params for generating the DCNN model (feature extraction model)
+  backbone: 'iresnet34'                           # support: ['iresnet18', 'iresnet34', 'iresnet50']
+  weights: 'weights/backbone.pth'
+
+onnx_params:
+  input_shape: [3, 112, 112]
+  converted_dir: 'onnx_weights'
+  weights: 'backbone.onnx'
+
+test_params:
+  input_shape: [3, 112, 112]
+  rgb_mean: [0.5, 0.5, 0.5]                       # for normalize inputs to [-1, 1]
+  rgb_std: [0.5, 0.5, 0.5]
+  threshold: 0.6
+  visualize_dir: '../resources/registers/visualize'
+  images_dir: '../resources/registers/images'
+  features_dir: '../resources/registers/features'
