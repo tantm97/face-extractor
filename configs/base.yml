@@ -1,0 +1,81 @@
+name: "lfw-None-r18-org-v1"                 # name of this experiment. Used for comet-ml too (dataset-head-backbone-other-version)
+tags: ['standard', 'training']              # for comet-ml
+gpu_id: [0]                                 # must set as a string, empty means using CPU
+seed: 1337                                  # random seed for reproduce results
+
+model_params:                               # params for generating the DCNN model (feature extraction model)
+  backbone: 'iresnet18'                     # support: ['iresnet18', 'iresnet34', 'iresnet50']
+  n_features: 512
+  use_se: False                             # use the SE block in resnet18
+  classify: 'softmax'
+  fp16: True
+  n_classes: 18
+
+
+metric:
+  type: ''  # support:  []
+  args:
+    easy_margin: False
+
+
+logs:
+  tensorboard_dir: 'tensorboard'            # if none, default runs
+  training_log_file: 'training_log.txt'
+
+
+train_params:
+  dataset_dir: ''
+  train_list: ''                            # text files containing the list of training files
+  val_list: ''                              # text files containing the list of validation files
+
+  pretrained_model: ''
+  pretrained_head: ''
+
+  freeze_backbone: True
+  freeze_layers: all
+
+  input_shape: [3, 112, 112]
+  rgb_mean: [0.5, 0.5, 0.5]                 # for normalize inputs to [-1, 1]
+  rgb_std: [0.5, 0.5, 0.5]
+
+  batch_size: 4                             # batch size
+  n_epochs: 30                              # total epoch number (use the first 1/25 epochs to warm up)
+  num_workers: 1
+  early_stop: 20
+  sanity_check: False
+  fp16: True
+
+
+test_params:
+  input_shape: [3, 112, 112]
+  rgb_mean: [0.5, 0.5, 0.5]                 # for normalize inputs to [-1, 1]
+  rgb_std: [0.5, 0.5, 0.5]
+  test_dir: 'evaluations'
+  weights: 'weights/backbone.pth'
+  dataset_dir:  'samples'
+  test_list: 'samples/test_list.txt'        # text files containing the list of testing files
+  batch_size: 4
+  num_workers: 4
+
+
+optimizer:
+  type: 'SGD'
+  args:
+    lr: 0.1                                 # initial learning rate
+    weight_decay: 5e-4                      # do not apply to batch_norm parameters
+    momentum: 0.9
+    # stages: [35, 65, 95]                  # epoch stages to decay learning rate
+
+
+scheduler:
+  type: 'LambdaLR'                          # support:  ['OneCycleLR', 'CosineAnnealingWarmRestarts', 'StepLR', 'ReduceLROnPlateau', 'LambdaLR']
+  args:
+    lr_step: 10
+    lr_decay: 0.95                          # when val_loss increase, lr = lr*lr_decay
+    decay_epoch: [1, 3, 5, 7]
+    warmup_epoch: -1
+
+
+loss:
+  type: 'softmax'                           # support: ['focal', 'softmax']
+  args:

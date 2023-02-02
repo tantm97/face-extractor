@@ -42,7 +42,7 @@ class IBasicBlock(nn.Module):
             planes,
             eps=1e-05,
         )
-        self.relu = nn.ReLU(planes)
+        self.prelu = nn.PReLU(planes)
         self.conv2 = conv3x3(planes, planes, stride)
         self.bn3 = nn.BatchNorm2d(
             planes,
@@ -56,7 +56,7 @@ class IBasicBlock(nn.Module):
         out = self.bn1(x)
         out = self.conv1(out)
         out = self.bn2(out)
-        out = self.relu(out)
+        out = self.prelu(out)
         out = self.conv2(out)
         out = self.bn3(out)
         if self.downsample is not None:
@@ -95,7 +95,7 @@ class IResNet(nn.Module):
         self.base_width = width_per_group
         self.conv1 = nn.Conv2d(3, self.inplanes, kernel_size=3, stride=1, padding=1, bias=False)
         self.bn1 = nn.BatchNorm2d(self.inplanes, eps=1e-05)
-        self.relu = nn.ReLU(self.inplanes)
+        self.prelu = nn.PReLU(self.inplanes)
         self.layer1 = self._make_layer(block, 64, layers[0], stride=2)
         self.layer2 = self._make_layer(block, 128, layers[1], stride=2, dilate=replace_stride_with_dilation[0])
         self.layer3 = self._make_layer(block, 256, layers[2], stride=2, dilate=replace_stride_with_dilation[1])
@@ -148,7 +148,7 @@ class IResNet(nn.Module):
         with torch.cuda.amp.autocast(self.fp16):
             x = self.conv1(x)
             x = self.bn1(x)
-            x = self.relu(x)
+            x = self.prelu(x)
             x = self.layer1(x)
             x = self.layer2(x)
             x = self.layer3(x)
