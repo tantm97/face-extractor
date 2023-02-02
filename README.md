@@ -87,21 +87,6 @@ Ex: python3 test.py --config configs/base.yml
 ****
 ## Acknowledgement
 
-This repo is inspired by:
-
-* [Arcface.Pytorch](https://github.com/ronghuaiyang/arcface-pytorch/tree/47ace80b128042cd8d2efd408f55c5a3e156b032).
-* [face.evoLVe](https://github.com/ZhaoJ9014/face.evoLVe/tree/9a3af4b5eabfd3603ae3a8edfce0775bdb0f78dc).
-* [InsightFace.Pytorch](https://github.com/TreB1eN/InsightFace_Pytorch/tree/350ff7aa9c9db8d369d1932e14d2a4d11a3e9553).
-* [FaceX-Zoo](https://github.com/JDAI-CV/FaceX-Zoo).
-* [Arcface.Torch.Mxnet](https://github.com/deepinsight/insightface/tree/8c0aa84c6234065e9e52298ed30821a8f89d0424/recognition/arcface_torch).
-* [Cavaface](https://github.com/cavalleria/cavaface).
-* [CurricularFace](https://github.com/HuangYG123/CurricularFace).
-* [PretrainedModels.PyTorch](https://github.com/Cadene/pretrained-models.pytorch).
-* [ArcFace-MXNet-Gluon](https://github.com/haleuh/ArcFace-MXNet-Gluon).
-* [Angular Penalty Softmax Losses Pytorch](https://github.com/cvqluu/Angular-Penalty-Softmax-Losses-Pytorch/tree/c41d599622b6a6ba7e5be6faf3a01da1202024ea).
-* [facenet-pytorch-glint360k](https://github.com/tamerthamoqa/facenet-pytorch-glint360k).
-* [Mag Face](https://github.com/IrvingMeng/MagFace).
-
 Scheduler:
 
 * [Learning Rate Scheduling](https://www.kaggle.com/isbhargav/guide-to-pytorch-learning-rate-scheduling).
