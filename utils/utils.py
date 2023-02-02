@@ -7,8 +7,9 @@ from datetime import datetime
 
 import numpy as np
 import torch
-from data_processing import dataset
 from torch.utils import data
+
+from data_processing import dataset
 
 
 def create_exp_dir(path, visual_folder=False):
