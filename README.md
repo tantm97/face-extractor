@@ -19,7 +19,7 @@ This is a deep learning library that makes face recognition efficient.
 ## Pre-Requisites
 
 * Ubuntu 20.04
-* Python 3.6.10
+* Python 3.8.10
 
 ****
 ## Requirements
