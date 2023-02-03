@@ -65,7 +65,9 @@ OR
 * Config parameters in configs/base.yml.
 * Start docker env and run test.py:
 ```
-bash docker/run.sh
+# Replace the source to project path in your machine.
+sudo docker run -itd --name tandev --gpus all  --shm-size=2gb -p 9001:9001 --mount type=bind,source=/home/tan/workspace/git/face-extractor/,target=/workspace aidev-cuda11.5-cudnn8-devel-ubuntu20.04:1.0.0
+# Replace tandev to your container name if you changed in the previous command.
 docker exec -it tandev bash
 python3 test.py
 ```
