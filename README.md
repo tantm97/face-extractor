@@ -37,6 +37,11 @@ bash docker/run.sh
 ## Usage
 
 * Clone the repo: `git clone git@github.com:tantm97/face-extractor.git`.
+* Download example (weights and samples):
+```
+bash download.sh
+```
+OR
 * Prepare your train/val/test data, and ensure database folder and list have the following structure:
   ```
   ./data/db_name/
@@ -58,6 +63,12 @@ bash docker/run.sh
           db_name/id4/2.jpg 4
   ```
 * Config parameters in configs/base.yml.
+* Start docker env and run test.py:
+```
+bash docker/run.sh
+docker exec -it tandev bash
+python3 test.py
+```
 
 ****
 ## Applications
@@ -68,6 +79,14 @@ bash docker/run.sh
 ```
 python3 test.py --config <PATH_TO_CONFIG>
 Ex: python3 test.py --config configs/base.yml
+```
+
+****
+## Result:
+```
+Val: 100%|██████████████████████████████████████| 14/14 [00:01<00:00, 10.35it/s]
+Threshold: 100%|████████████████████████████| 9/9 [00:00<00:00, 251.47it/s, 0.8]
+Accuracy =  0.9821428571428571
 ```
 
 ****
